@@ -58,6 +58,35 @@ jobs:
         shell: bash
         run: | 
           echo "Deploy PROD"
+
+
+  # deploy-aws:
+  #   needs: build
+  #   name: Deploy aws
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Download JAR
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: artifact
+  #         path: target/
+  #     - name: Display structure of downloaded files
+  #       run: ls -R
+  #     - name: Deploy to EB
+  #       uses: einaregilsson/beanstalk-deploy@v21
+  #       with:
+  #         aws_access+key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
+  #         wait_for_environment_recovery: 90
+  #         use_existing_version_if_available: true
+  #         application_name: Teste1
+  #         environment_name: Teste1-env
+  #         version_label: ${{ github.SHA }}
+  #         region: us-east-1
+  #         deploy_package: ./tagrte/demo-0.0.2.7-SNAPSHOT.jar
+      
     
 
   # publish:
